@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wise Women Crypto Payment Popup</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #popupOverlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 9999;
+    }
+
+    #popupBox {
+      background: white;
+      width: 90%;
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .closeBtn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+      color: #888;
+    }
+
+    .stripeBtn {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #635bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .note {
+      font-size: 13px;
+      color: #777;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Popup -->
+  <div id="popupOverlay">
+    <div id="popupBox">
+      <span class="closeBtn" onclick="closePopup()">&times;</span>
+      <h2>Wise Women Crypto</h2>
+      <p>Secure your spot with our trusted Stripe checkout.</p>
+
+      <a href="https://buy.stripe.com/cNifZg20K1NpcUTbT82ZO09" target="_blank" rel="noopener noreferrer">
+        <button class="stripeBtn">Pay Now with Stripe</button>
+      </a>
+
+      <p class="note">Payments are processed securely by Stripe.</p>
+    </div>
+  </div>
+
+  <script>
+    function showPopup() {
+      document.getElementById("popupOverlay").style.display = "block";
+    }
+
+    function closePopup() {
+      document.getElementById("popupOverlay").style.display = "none";
+    }
+
+    // Trigger the popup 5 seconds after DOM is ready
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", function() {
+        setTimeout(showPopup, 5000);
+      });
+    } else {
+      setTimeout(showPopup, 5000);
+    }
+
+    // Allow close when clicking outside the popup box
+    window.onclick = function(event) {
+      const overlay = document.getElementById("popupOverlay");
+      if (event.target === overlay) {
+        closePopup();
+      }
+    }
+  </script>
+
+</body>
+</html>
